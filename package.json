@@ -1,0 +1,14 @@
+{
+  "name": "baybayin-transliterator",
+  "version": "0.0.1-beta",
+  "description": "A baybayin transliterator for nodejs. (Still trying to make baybayin to alphanumeric).",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index"
+  },
+  "keywords": [
+    "baybayin"
+  ],
+  "author": "RyannKim327",
+  "license": "MIT"
+}
