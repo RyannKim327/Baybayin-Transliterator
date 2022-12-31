@@ -10,5 +10,13 @@
     "baybayin"
   ],
   "author": "RyannKim327",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RyannKim327/Baybayin-Transliterator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RyannKim327/Baybayin-Transliterator/issues"
+  },
+  "homepage": "https://github.com/RyannKim327/Baybayin-Transliterator#readme"
 }
