@@ -13,7 +13,7 @@ let toString = (code) => {
 }
 
 let toBaybayin = str => {
-	str = str.toLowerCase().replace(/i/gi, "e").replace(/u/gi, "o").replace(/x|z/gi, "s").replace(/c|q/gi, "k").replace(/j/gi, "dy").replace(/f/gi, "p").replace(/v/gi, "b")
+	str = str.toLowerCase().replace(/r/gi, "d").replace(/i/gi, "e").replace(/u/gi, "o").replace(/x|z/gi, "s").replace(/c|q/gi, "k").replace(/j/gi, "dy").replace(/f/gi, "p").replace(/v/gi, "b")
 	let r = ""
 	for(let c = 0; c < str.length; c++){
 		if(c < str.length - 1){
