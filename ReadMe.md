@@ -3,11 +3,14 @@
 
 > This package is just the same with the api I've created before. But I redevelop this with different algorithm.
 
-### how to use .toBaybayin(String data)
+*Note*
+> This version has the new version of algorithm, still in test, but it works on me. If you found out some bugs, kindly create an issue on my github repository, or just email me @ weryses19@gmail.com or message us [on facebook](https://facebook.com/MPOP.ph)
+
+### how to use baybay(String data)
 ``` NodeJS
 const baybayin = require("baybayin-transliterator")
 
-console.log(baybayin.toBaybayin("Kamusta"))
+console.log(baybayin("Kamusta"))
 ```
 
 ---
