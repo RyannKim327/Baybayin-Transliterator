@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baybayin Transliterator - Web Example</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px 10px 0;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .output-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+
+        .baybayin-output {
+            font-family: 'Noto Sans Tagalog', 'Baybayin Modern', serif;
+            font-size: 24px;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            min-height: 50px;
+            border: 1px solid #ddd;
+        }
+
+        .original-output {
+            font-size: 16px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .examples {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .example-item {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .example-item:hover {
+            background-color: #e8f4f8;
+        }
+
+        .stats {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .error {
+            color: #e74c3c;
+            background-color: #fdf2f2;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .info {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #28a745;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .baybayin-output {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 Baybayin Transliterator</h1>
+        
+        <div class="info">
+            <strong>Note:</strong> This is a demonstration of the Baybayin Transliterator package. 
+            For this example to work, you need to have the package installed and properly imported.
+            See the JavaScript section below for implementation details.
+        </div>
+
+        <div class="input-section">
+            <label for="textInput">Enter text to transliterate:</label>
+            <textarea 
+                id="textInput" 
+                placeholder="Type Filipino text here... (e.g., 'Kamusta ka aking kaibigan?')"
+            ></textarea>
+        </div>
+
+        <div>
+            <button onclick="translateText()">Translate to Baybayin</button>
+            <button onclick="clearAll()">Clear</button>
+            <button onclick="copyResult()">Copy Result</button>
+        </div>
+
+        <div class="output-section" id="outputSection" style="display: none;">
+            <h3>Translation Result:</h3>
+            <div class="original-output" id="originalOutput"></div>
+            <div class="baybayin-output" id="baybayinOutput"></div>
+            <div class="stats" id="statsOutput"></div>
+        </div>
+
+        <div class="examples">
+            <h3>Click on examples to try them:</h3>
+            <div class="example-item" onclick="useExample('Kamusta ka?')">
+                Kamusta ka? (How are you?)
+            </div>
+            <div class="example-item" onclick="useExample('Mahal kita!')">
+                Mahal kita! (I love you!)
+            </div>
+            <div class="example-item" onclick="useExample('Salamat sa lahat ng tulong.')">
+                Salamat sa lahat ng tulong. (Thank you for all the help.)
+            </div>
+            <div class="example-item" onclick="useExample('Ang ganda ng umaga, hindi ba?')">
+                Ang ganda ng umaga, hindi ba? (Beautiful morning, isn't it?)
+            </div>
+            <div class="example-item" onclick="useExample('Mga kaibigan ko ay masasaya.')">
+                Mga kaibigan ko ay masasaya. (My friends are happy.)
+            </div>
+            <div class="example-item" onclick="useExample('Computer at internet ay mahalaga ngayon.')">
+                Computer at internet ay mahalaga ngayon. (Computers and internet are important now.)
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+    Note: In a real implementation, you would import the package like this:
+    
+    For ES modules:
+    <script type="module">
+        import baybay from './path/to/baybayin-transliterator/index.js';
+        // ... rest of the code
+    </script>
+    
+    For CommonJS (with bundler):
+    <script src="./bundled-app.js"></script>
+    
+    For this example, we'll simulate the function:
+    -->
+    
+    <script>
+        // Simulated baybay function for demonstration
+        // In real usage, import from the actual package
+        function baybay(text) {
+            // This is a simplified simulation
+            // The actual package provides much more accurate transliteration
+            const simpleMapping = {
+                'a': 'ᜀ', 'e': 'ᜁ', 'i': 'ᜁ', 'o': 'ᜂ', 'u': 'ᜂ',
+                'ka': 'ᜃ', 'ga': 'ᜄ', 'nga': 'ᜅ', 'ta': 'ᜆ', 'da': 'ᜇ',
+                'na': 'ᜈ', 'pa': 'ᜉ', 'ba': 'ᜊ', 'ma': 'ᜋ', 'ya': 'ᜌ',
+                'la': 'ᜎ', 'wa': 'ᜏ', 'sa': 'ᜐ', 'ha': 'ᜑ'
+            };
+            
+            // Very basic simulation - use actual package for real implementation
+            let result = text.toLowerCase();
+            result = result.replace(/kamusta/g, 'ᜃᜋᜓᜐ᜔ᜆ');
+            result = result.replace(/mahal/g, 'ᜋᜑᜎ᜔');
+            result = result.replace(/kita/g, 'ᜃᜒᜆ');
+            result = result.replace(/salamat/g, 'ᜐᜎᜋᜆ᜔');
+            result = result.replace(/\?/g, '᜶');
+            result = result.replace(/!/g, '᜶');
+            result = result.replace(/\./g, '᜵');
+            
+            return {
+                original: text,
+                baybain: result
+            };
+        }
+
+        function translateText() {
+            const input = document.getElementById('textInput').value.trim();
+            
+            if (!input) {
+                showError('Please enter some text to translate.');
+                return;
+            }
+
+            try {
+                const startTime = performance.now();
+                const result = baybay(input);
+                const endTime = performance.now();
+                
+                document.getElementById('originalOutput').textContent = 
+                    `Original: ${result.original}`;
+                document.getElementById('baybayinOutput').textContent = result.baybain;
+                
+                const processingTime = (endTime - startTime).toFixed(2);
+                const charCount = input.length;
+                document.getElementById('statsOutput').innerHTML = 
+                    `Characters: ${charCount} | Processing time: ${processingTime}ms`;
+                
+                document.getElementById('outputSection').style.display = 'block';
+                
+            } catch (error) {
+                showError('An error occurred during translation: ' + error.message);
+            }
+        }
+
+        function clearAll() {
+            document.getElementById('textInput').value = '';
+            document.getElementById('outputSection').style.display = 'none';
+            hideError();
+        }
+
+        function copyResult() {
+            const baybayinText = document.getElementById('baybayinOutput').textContent;
+            if (baybayinText) {
+                navigator.clipboard.writeText(baybayinText).then(() => {
+                    // Visual feedback
+                    const button = event.target;
+                    const originalText = button.textContent;
+                    button.textContent = 'Copied!';
+                    button.style.backgroundColor = '#27ae60';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.style.backgroundColor = '#3498db';
+                    }, 2000);
+                }).catch(() => {
+                    showError('Failed to copy to clipboard');
+                });
+            }
+        }
+
+        function useExample(text) {
+            document.getElementById('textInput').value = text;
+            translateText();
+        }
+
+        function showError(message) {
+            hideError();
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = message;
+            errorDiv.id = 'errorMessage';
+            document.querySelector('.container').insertBefore(errorDiv, document.querySelector('.input-section'));
+        }
+
+        function hideError() {
+            const errorDiv = document.getElementById('errorMessage');
+            if (errorDiv) {
+                errorDiv.remove();
+            }
+        }
+
+        // Auto-translate on Enter key
+        document.getElementById('textInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && event.ctrlKey) {
+                translateText();
+            }
+        });
+
+        // Real-time character count
+        document.getElementById('textInput').addEventListener('input', function() {
+            const charCount = this.value.length;
+            if (charCount > 0) {
+                this.style.borderColor = '#3498db';
+            } else {
+                this.style.borderColor = '#ddd';
+            }
+        });
+    </script>
+</body>
+</html>
