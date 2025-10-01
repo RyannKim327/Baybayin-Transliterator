@@ -13,7 +13,8 @@ _Note_
 ```NodeJS
 const baybayin = require("baybayin-transliterator")
 
-console.log(baybayin("Kamusta"))
+const result = baybayin("Kamusta")
+console.log(result.baybayin)
 ```
 
 ---

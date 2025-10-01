@@ -105,7 +105,7 @@ console.log(baybayin("Kamusta"));
 import baybay from 'baybayin-transliterator';
 const result = baybay("Kamusta");
 console.log(result.original); // "Kamusta"
-console.log(result.baybain);  // "ᜃᜋᜓᜐ᜔ᜆ"
+console.log(result.baybayin);  // "ᜃᜋᜓᜐ᜔ᜆ"
 ```
 
 #### Breaking Changes

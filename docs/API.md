@@ -16,7 +16,7 @@ npm install baybayin-transliterator
 import baybay from 'baybayin-transliterator';
 
 const result = baybay("Kamusta ka");
-console.log(result.baybain); // Output: ᜃᜋᜓᜐ᜔ᜆ ᜃ
+console.log(result.baybayin); // Output: ᜃᜋᜓᜐ᜔ᜆ ᜃ
 ```
 
 ## Main API
@@ -36,7 +36,7 @@ The primary function for transliterating Latin text to Baybayin script.
 ```typescript
 {
   original: string;  // The original input text
-  baybain: string;   // The transliterated Baybayin text
+  baybayin: string;   // The transliterated Baybayin text
 }
 ```
 
@@ -48,20 +48,20 @@ import baybay from 'baybayin-transliterator';
 
 const result = baybay("hello");
 console.log(result);
-// Output: { original: "hello", baybain: "ᜑᜒᜎ᜔ᜎᜓ" }
+// Output: { original: "hello", baybayin: "ᜑᜒᜎ᜔ᜎᜓ" }
 ```
 
 **Multiple Words:**
 ```typescript
 const result = baybay("Kamusta ka aking kaibigan");
-console.log(result.baybain);
+console.log(result.baybayin);
 // Output: ᜃᜋᜓᜐ᜔ᜆ ᜃ ᜀᜃᜒᜅ᜔ ᜃᜀᜒᜊᜒᜄᜈ᜔
 ```
 
 **With Punctuation:**
 ```typescript
 const result = baybay("Kumusta ka? Mabuti naman!");
-console.log(result.baybain);
+console.log(result.baybayin);
 // Output: ᜃᜓᜋᜓᜐ᜔ᜆ ᜃ᜶ ᜋᜊᜓᜆᜒ ᜈᜋᜈ᜔᜶
 ```
 
@@ -70,7 +70,7 @@ console.log(result.baybain);
 const text = `Kamusta ka aking mahal
 Sana at nasa mabuti ka.`;
 const result = baybay(text);
-console.log(result.baybain);
+console.log(result.baybayin);
 // Output: ᜃᜋᜓᜐ᜔ᜆ ᜃ ᜀᜃᜒᜅ᜔ ᜋᜑᜎ᜔
 //         ᜐᜈ ᜀᜆ᜔ ᜈᜐ ᜋᜊᜓᜆᜒ ᜃ᜵
 ```
@@ -199,11 +199,11 @@ The library is designed to be fault-tolerant:
 ```typescript
 // Handles empty strings
 const empty = baybay("");
-console.log(empty); // { original: "", baybain: "" }
+console.log(empty); // { original: "", baybayin: "" }
 
 // Preserves unknown characters
 const mixed = baybay("Hello 123 @#$");
-console.log(mixed.baybain); // "ᜑᜒᜎ᜔ᜎᜓ 123 @#$"
+console.log(mixed.baybayin); // "ᜑᜒᜎ᜔ᜎᜓ 123 @#$"
 
 // Handles null/undefined gracefully (will throw TypeError)
 try {
@@ -227,7 +227,7 @@ function processLargeText(text: string, chunkSize = 1000) {
   const chunks = [];
   for (let i = 0; i < text.length; i += chunkSize) {
     const chunk = text.slice(i, i + chunkSize);
-    chunks.push(baybay(chunk).baybain);
+    chunks.push(baybay(chunk).baybayin);
   }
   return chunks.join('');
 }
@@ -271,7 +271,7 @@ function BaybayinTranslator() {
 
   const handleTranslate = () => {
     const result = baybay(input);
-    setOutput(result.baybain);
+    setOutput(result.baybayin);
   };
 
   return (
@@ -304,7 +304,7 @@ if (!text) {
 
 const result = baybay(text);
 console.log(`Original: ${result.original}`);
-console.log(`Baybayin: ${result.baybain}`);
+console.log(`Baybayin: ${result.baybayin}`);
 ```
 
 ## Limitations
@@ -341,7 +341,7 @@ To display Baybayin characters properly, ensure:
 ```typescript
 // Solution: Check font support
 const result = baybay("test");
-console.log(result.baybain.charCodeAt(0)); // Should return Unicode code point
+console.log(result.baybayin.charCodeAt(0)); // Should return Unicode code point
 ```
 
 **Issue**: Unexpected normalization
@@ -363,11 +363,11 @@ function efficientTransliteration(text: string) {
   
   // Process in smaller chunks
   const chunks = text.match(/.{1,1000}/g) || [];
-  const results = chunks.map(chunk => baybay(chunk).baybain);
+  const results = chunks.map(chunk => baybay(chunk).baybayin);
   
   return {
     original: text,
-    baybain: results.join('')
+    baybayin: results.join('')
   };
 }
 ```

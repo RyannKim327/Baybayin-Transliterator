@@ -1,6 +1,6 @@
-import { type NOMALIZED_TEXT, type BAYBAYIN } from "./interfaces";
+import { type NOMALIZED_TEXT, BAYBAYIN } from "./interfaces";
 
-const BAYBAYIN_CHARACRERS: BAYBAYIN = {
+const BAYBAYIN_CHARACTERS: BAYBAYIN = {
 	consonants: new Map([
 		["b", 5898],
 		["k", 5891],
@@ -46,7 +46,7 @@ const NORMALIZED_RULES: NOMALIZED_TEXT[] = [
 	[/v/gi, "b"],
 	[/x|z/gi, "s"],
 	[/j/gi, "dy"],
-	[/\sng\s/gi, " nang "],
+	[/\bng\b/gi, " nang "],
 ];
 
-export { BAYBAYIN_CHARACRERS, NORMALIZED_RULES };
+export { BAYBAYIN_CHARACTERS, NORMALIZED_RULES };

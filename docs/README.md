@@ -41,11 +41,11 @@ import baybay from 'baybayin-transliterator';
 
 // Simple transliteration
 const result = baybay("Kamusta ka");
-console.log(result.baybain); // ᜃᜋᜓᜐ᜔ᜆ ᜃ
+console.log(result.baybayin); // ᜃᜋᜓᜐ᜔ᜆ ᜃ
 
 // With punctuation
 const greeting = baybay("Kumusta ka? Mabuti naman!");
-console.log(greeting.baybain); // ᜃᜓᜋᜓᜐ᜔ᜆ ᜃ᜶ ᜋᜊᜓᜆᜒ ᜈᜋᜈ᜔᜶
+console.log(greeting.baybayin); // ᜃᜓᜋᜓᜐ᜔ᜆ ᜃ᜶ ᜋᜊᜓᜆᜒ ᜈᜋᜈ᜔᜶
 ```
 
 ### Web Application Integration
@@ -75,7 +75,7 @@ console.log(greeting.baybain); // ᜃᜓᜋᜓᜐ᜔ᜆ ᜃ᜶ ᜋᜊᜓᜆᜒ �
         window.translate = function() {
             const input = document.getElementById('input').value;
             const result = baybay(input);
-            document.getElementById('output').textContent = result.baybain;
+            document.getElementById('output').textContent = result.baybayin;
         };
     </script>
 </body>
@@ -100,12 +100,12 @@ if (args[0] === '--file') {
     const filename = args[1];
     const content = readFileSync(filename, 'utf-8');
     const result = baybay(content);
-    console.log(result.baybain);
+    console.log(result.baybayin);
 } else {
     const text = args.join(' ');
     const result = baybay(text);
     console.log(`Original: ${result.original}`);
-    console.log(`Baybayin: ${result.baybain}`);
+    console.log(`Baybayin: ${result.baybayin}`);
 }
 ```
 
@@ -287,7 +287,7 @@ function debugUnicode(text: string) {
 
 // Usage
 const result = baybay("kamusta");
-debugUnicode(result.baybain);
+debugUnicode(result.baybayin);
 ```
 
 ## 📊 Performance Considerations

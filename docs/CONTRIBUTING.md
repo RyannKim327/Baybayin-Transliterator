@@ -211,12 +211,12 @@ import baybay from '../src';
 describe('Baybayin Transliteration', () => {
   test('should transliterate basic words', () => {
     const result = baybay('kamusta');
-    expect(result.baybain).toBe('ᜃᜋᜓᜐ᜔ᜆ');
+    expect(result.baybayin).toBe('ᜃᜋᜓᜐ᜔ᜆ');
   });
 
   test('should handle punctuation', () => {
     const result = baybay('Hello!');
-    expect(result.baybain).toBe('ᜑᜒᜎ᜔ᜎᜓ᜶');
+    expect(result.baybayin).toBe('ᜑᜒᜎ᜔ᜎᜓ᜶');
   });
 });
 ```
@@ -493,4 +493,4 @@ Special thanks to:
 
 ---
 
-For more information, visit the [project repository](https://github.com/RyannKim327/Baybayin-Transliterator) or contact the maintainer.
+Fr more information, visit the [project repository](https://github.com/RyannKim327/Baybayin-Transliterator) or contact the maintainer.

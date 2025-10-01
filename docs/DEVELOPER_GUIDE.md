@@ -127,7 +127,7 @@ Converts Latin text to Baybayin script.
 ```typescript
 {
   original: string;    // Original input text
-  baybain: string;     // Transliterated Baybayin text
+  baybayin: string;     // Transliterated Baybayin text
 }
 ```
 
@@ -137,7 +137,7 @@ import baybay from 'baybayin-transliterator';
 
 const result = baybay("Kamusta ka");
 console.log(result.original); // "Kamusta ka"
-console.log(result.baybain);  // "ᜃᜋᜓᜐ᜔ᜆ ᜃ"
+console.log(result.baybayin);  // "ᜃᜋᜓᜐ᜔ᜆ ᜃ"
 ```
 
 ### Internal Functions
@@ -295,8 +295,8 @@ testCases.forEach(({ input, expected }) => {
   const result = baybay(input);
   console.log(`Input: ${input}`);
   console.log(`Expected: ${expected}`);
-  console.log(`Got: ${result.baybain}`);
-  console.log(`Match: ${result.baybain === expected ? '✓' : '✗'}`);
+  console.log(`Got: ${result.baybayin}`);
+  console.log(`Match: ${result.baybayin === expected ? '✓' : '✗'}`);
   console.log('---');
 });
 ```
