@@ -11,7 +11,7 @@ _Note_
 ### how to use baybay(data: string)
 
 ```NodeJS
-const baybayin = require("baybayin-transliterator")
+const baybayin = require("baybayin-transliterator").default
 
 const result = baybayin("Kamusta")
 console.log(result.baybayin)
