@@ -6,9 +6,9 @@
 
 _Note_
 
-> This version has the new version of algorithm, still in test, but it works on me. If you found out some bugs, kindly create an issue on my github repository, or just email me @ weryses19@gmail.com or message us [on facebook](https://facebook.com/MPOP.ph)
+> This version has the new version of algorithm, still in test, but it works on me. If you found out some bugs, kindly create an issue on my github repository, or just email me @ weryses19@gmail.com or message us [on facebook](https://facebook.com/MPOP.2016)
 
-### how to use baybay(String data)
+### how to use baybay(data: string)
 
 ```NodeJS
 const baybayin = require("baybayin-transliterator")
