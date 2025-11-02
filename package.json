@@ -1,10 +1,16 @@
 {
   "name": "baybayin-transliterator",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "A baybayin transliterator for nodejs. (Still trying to make baybayin to alphanumeric).",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "module": "NodeNext",
   "scripts": {
-    "test": "node index"
+    "test": "npx tsx test.ts",
+    "build": "npx tsc",
+    "dev": "npx tsx test.ts"
   },
   "keywords": [
     "baybayin"
@@ -18,5 +24,9 @@
   "bugs": {
     "url": "https://github.com/RyannKim327/Baybayin-Transliterator/issues"
   },
-  "homepage": "https://github.com/RyannKim327/Baybayin-Transliterator#readme"
+  "homepage": "https://github.com/RyannKim327/Baybayin-Transliterator#readme",
+  "devDependencies": {
+    "@types/node": "^24.9.2",
+    "typescript": "^5.9.2"
+  }
 }
