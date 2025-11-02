@@ -31,6 +31,7 @@ console.log(result.baybayin)
 6. Jerson Carin
 7. Rovie Francisco
 8. John Roy Lapida Calimlim
-9. Qodo (AI-powered documentation generation)
+9. John Jeremy Antiguo
+10. Qodo (AI-powered documentation generation)
 
 > The credits are not just displayed, but also they have a big part for this project, also to my programming journey.
