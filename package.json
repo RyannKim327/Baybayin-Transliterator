@@ -27,7 +27,6 @@
   "homepage": "https://github.com/RyannKim327/Baybayin-Transliterator#readme",
   "devDependencies": {
     "@types/node": "^24.6.1",
-    "tsx": "^4.20.6",
     "typescript": "^5.9.2"
   }
 }
